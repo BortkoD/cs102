@@ -180,10 +180,7 @@ def solve(grid: List[List[str]]) -> Optional[List[List[str]]]:
             else:
                 return grid
     else:
-        if check_solution(grid):
-            return grid
-        else:
-            return None
+        return grid
 
 
 
