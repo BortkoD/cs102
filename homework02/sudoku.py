@@ -191,6 +191,17 @@ def solve(grid: List[List[str]]) -> Optional[List[List[str]]]:
 def check_solution(solution: List[List[str]]) -> bool:
     """ Если решение solution верно, то вернуть True, в противном случае False """
     # TODO: Add doctests with bad puzzles
+    necessary_numbers = [num for num in range(1, 10)]
+    for i in range(len(solution)):
+        for j in range(len(solution[0])):
+            numbers_in_block = get_block(solution, (i, j))
+            numbers_in_row = get_row(solution, (i, j))
+            numbers_in_col = get_col(solution, (i, j))
+            for num in necessary_numbers:
+                if numbers_in_col.count(str(num)) != 1 or numbers_in_row.count(str(num)) != 1:
+                    return False
+                if numbers_in_block.count(str(num)) != 1:
+                    return False
     return True
 
 
